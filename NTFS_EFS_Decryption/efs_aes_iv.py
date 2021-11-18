@@ -85,7 +85,9 @@ with open(filename, 'rb') as f:
 		plain_text = cipher.decrypt(cipher_text)
 		try:
 			print("Decryption successful for block %d." %(block_counter))
-			decryption_output =	decryption_output + plain_text.decode(output_encoding)
+			# decryption_output =	decryption_output + plain_text.decode(output_encoding)
+			with open('output', 'ab') as ff:
+				ff.write(plain_text)
 		except ValueError:
 			print("Key incorrect or message corrupted")
 		
